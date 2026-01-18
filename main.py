@@ -1,12 +1,12 @@
-from Student_manager import student_manager
+from Student_manager import StudentManager
 def main():
- manager = student_manager()
+ manager = StudentManager()
  while True:
-    print("\n1.add student")
+    print("1.add student")
     print("2.view student")
     print("3.delete student")
     print("4.exit")
-    choice = input("Enter your choice: ")
+    choice = int(input("Enter your choice: "))
     if choice == "1":
         r=input("roll no: ")
         n=input("student name: ")
