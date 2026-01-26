@@ -1,4 +1,4 @@
-from Student_manager import StudentManager
+from student_manager import StudentManager
 def main():
  manager = StudentManager()
  while True:
