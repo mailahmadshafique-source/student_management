@@ -16,7 +16,7 @@ def save_data(self,data):
     try:
         with open(self.filename, "w") as file:
              json.dump(data, file, indent=4)
-        print("Data saved successfully!")
+        print("Data saved successfully")
      except Exception as e:
          print("Error saving data:",e)
 
