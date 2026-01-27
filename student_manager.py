@@ -1,4 +1,4 @@
-from  student import Student
+from  student import student
 from file_manager import FileManager
 
 class StudentManager:
