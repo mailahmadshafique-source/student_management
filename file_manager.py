@@ -1,22 +1,38 @@
 import json
-class Manager:
-    def __init__(self,filename="data.json"):
-        self.filename = filename
-def load_data(self):
-    try:
-        with open(self.filename, "r") as file:
-            data = json.load(file)
-        return data
-    except FileNotFoundError:
-        return[]
-    except Exception as e:
-        print("Error: ", e)
-        return []
-def save_data(self,data):
-    try:
-        with open(self.filename, "w") as file:
-             json.dump(data, file, indent=4)
-        print("Data saved successfully")
-     except Exception as e:
-         print("Error saving data:",e)
+import os
+
+class StudentManager:
+     def __init__(self,filename="students.json"):
+         self.filename = filename
+         self.students = []
+         self.load_students()
+     def load_students(self):
+         if os.path.exists(self.filename):
+             with open(self.filename,"r",encoding="utf-8") as f:
+                 try:
+                     self.students = json.load(f)
+                 except json.decoder.JSONDecodeError:
+                     self.students = []
+                 else:
+                     self.students=[]
+     def save_students(self):
+         with open(self.filename,"w",encoding="utf-8") as f:
+             json.dump(self.students,f,indent=4)
+     def add_student(self,student_id,name,age):
+         student={
+             "id":student_id,
+             "name":name,
+             "age":age
+         }
+         self.students.append(student)
+         self.save_students()
+     def show_students(self):
+         for student in self.students:
+             print(student)
+     def delete_student(self,student_id):
+         self.students=[
+             student for student in self.students
+             if student["id"]!=student_id
+         ]
+         self.save_students()
 
